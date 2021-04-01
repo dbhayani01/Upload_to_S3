@@ -1,7 +1,7 @@
 var bucket = new AWS.S3({
   accessKeyId: "",//your keyid
-  secretAccessKey: "",//your acces key of aws s3
-  region: 'us-east-2'// your region of aws
+  secretAccessKey: " ",//your skey
+  region: 'us-east-2'
 });
 
 uploadfile = function (fileName, file) {
@@ -23,20 +23,19 @@ uploadfile = function (fileName, file) {
 };
 var myFuncCalls = 0;
 viewFiledata = function (filename) {
-
     AWS.config.update({
-      accessKeyId: "",//your access key
-      secretAccessKey: "",//your secret key
+      accessKeyId: "",//your key
+      secretAccessKey: ""//your skey
     });
     var s3 = new AWS.S3();
-    var fn = myFuncCalls === 0 ? filename.split(".")[0]+".txt" : filename;
+    var fn = myFuncCalls === 0?filename.split(".")[0]+".txt":filename;
     myFuncCalls++;
     s3.getObject(
       { Bucket: "extracttext", Key: fn },
       function (error, data) {
         if (error != null) {
           document.getElementById("textfile").innerHTML= "TRYING TO FETCH...........";
-          viewFiledata(fn);
+          myFuncCalls<25 ? setTimeout(function(){viewFiledata(fn) }, 3000) : alert("Couldn't find the text file for the given file");
         } else {
            document.getElementById("textfile").innerHTML= fn +"<br>";
            document.getElementById("textfile").innerHTML+= data.Body;
