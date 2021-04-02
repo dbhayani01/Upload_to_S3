@@ -6,7 +6,7 @@
       <script src="app.js"></script>  
    </head>   
    <body>    
-      <input type="file" id="myFile" multiple size="50" onchange="uploadSampleFile()"><br><br>    
+      <input type="file" id="myFile" multiple size="50" onchange="return uploadSampleFile()"><br><br>    
       <div id="myProgress" style="display:none;">      
           <div id="myBar"></div>    
       </div> 
@@ -14,7 +14,7 @@
          <p id = "message"></p></div><br>
       </div> 
       <div>
-         <p id = "textfile"></p>
+         <pre id = "textfile"></pre>
       </div>
    </body> 
 </html>
