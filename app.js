@@ -1,7 +1,7 @@
 var bucket = new AWS.S3({
   accessKeyId: "",
   secretAccessKey: "",
-  region: "us-east-2",
+  region: "",
 });
 
 uploadfile = function (fileName, file) {
