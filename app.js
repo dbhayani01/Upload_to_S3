@@ -6,7 +6,7 @@ var bucket = new AWS.S3({
 
 uploadfile = function (fileName, file) {
   const params = {
-    Bucket: "extracttext",
+    Bucket: "",
     Key: fileName,
     Body: file,
     ContentType: file.type,
@@ -32,7 +32,7 @@ viewFiledata = function (filename) {
   var s3 = new AWS.S3();
   var fn = myFuncCalls === 0 ? filename.split(".")[0] + ".txt" : filename;
   myFuncCalls++;
-  s3.getObject({ Bucket: "extracttext", Key: fn }, function (error, data) {
+  s3.getObject({ Bucket: "", Key: fn }, function (error, data) {
     if (error != null) {
       document.getElementById("textfile").innerHTML =
         "TRYING TO FETCH...........";
